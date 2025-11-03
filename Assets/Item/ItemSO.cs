@@ -10,6 +10,7 @@ public class ItemSO : ScriptableObject
     public Sprite itemSprite;
     [TextArea] public string description;
 
+    public bool isStar;
 
     [Header("Stats")]
     public int maxHealth;
