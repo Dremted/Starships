@@ -2,15 +2,16 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.InputSystem.LowLevel;
 
 public class MoveStarShip : MonoBehaviour
 {
 
     [Header("Speed Starship")]
     public float verticalSpeed = 3f;
-    public float horizontalSpeed = 2f;
+    public float maxHorizontalSpeed = 4f;
+    public float minHorizontalSpeed = 2f;
     public float direction = 1;
+    public float horizontalSpeed;
 
     [Header("Limit Horizontal")]
     public float limitDistanceRight = 3f;
@@ -28,13 +29,20 @@ public class MoveStarShip : MonoBehaviour
         positionStart = transform.position;
     }
 
+    private void OnEnable()
+    {
+        horizontalSpeed = UnityEngine.Random.Range(minHorizontalSpeed, maxHorizontalSpeed);
+    }
+
     private void FixedUpdate()
     {
         OnMove();
+        Destroy(gameObject, 4f);
     }
 
     private void OnMove()
     {
+        
         Vector2 moveDir = new Vector2(direction * horizontalSpeed, -verticalSpeed);
         _rb.velocity = moveDir;
 
