@@ -16,8 +16,9 @@ MonoBehaviour:
   itemSprite: {fileID: 21300000, guid: 8c3942bf0e7ba6a4d8953276639a9d6e, type: 3}
   description: It`s star.
   isStar: 1
+  isItem: 0
   maxHealth: 0
   currentHealth: 0
   speed: 0
   amount: 0
-  duration: 1
+  duration: 0

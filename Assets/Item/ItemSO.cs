@@ -11,6 +11,7 @@ public class ItemSO : ScriptableObject
     [TextArea] public string description;
 
     public bool isStar;
+    public bool isItem;
 
     [Header("Stats")]
     public int maxHealth;

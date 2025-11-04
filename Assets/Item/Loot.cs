@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -11,6 +12,8 @@ public class Loot : MonoBehaviour
     public Rigidbody2D _rb;
 
     public int quantity;
+
+    public static event Action<ItemSO, int> OnItemLooted;
 
     private void Awake()
     {
@@ -30,6 +33,9 @@ public class Loot : MonoBehaviour
     {
         if((player.value & (1 << collision.gameObject.layer)) > 0)
         {
+            if (itemSO.isItem)
+                OnItemLooted?.Invoke(itemSO, quantity);
+
             _rb.velocity = Vector3.zero;
             _rb.gravityScale = 0;
             animator.Play("pickup");

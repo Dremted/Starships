@@ -15,6 +15,8 @@ MonoBehaviour:
   buffName: Amount
   itemSprite: {fileID: 21300000, guid: b8d55a200e4ebde41816f3a0bd2e0772, type: 3}
   description: T_R_R_R_R_R_R_R_R_R_
+  isStar: 0
+  isItem: 1
   maxHealth: 0
   currentHealth: 0
   speed: 0
