@@ -52,4 +52,12 @@ public class ManagerInventory : MonoBehaviour
             }
         }
     }
+
+    public void UseItem(InventorySlot slot)
+    {
+        if(slot.quantity > 0 && slot.itemSO != null)
+        {
+            Debug.Log("Use item: " + slot.itemSO.name);
+        }
+    }
 }
