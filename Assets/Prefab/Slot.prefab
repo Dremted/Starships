@@ -224,8 +224,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 16208c1912696114db9c80f25284413b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  itemSO: {fileID: 0}
   quantity: 0
+  stackSize: 3
+  managerInventory: {fileID: 0}
+  itemSO: {fileID: 0}
   textSlotQuantity: {fileID: 2204870799158927354}
   iconSlot: {fileID: 2528624987042034330}
 --- !u!1 &3922661471600595828

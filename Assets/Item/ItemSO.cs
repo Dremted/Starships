@@ -12,6 +12,7 @@ public class ItemSO : ScriptableObject
 
     public bool isStar;
     public bool isItem;
+    public int stackSize;
 
     [Header("Stats")]
     public int maxHealth;

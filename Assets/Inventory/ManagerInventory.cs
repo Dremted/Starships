@@ -12,6 +12,8 @@ public class ManagerInventory : MonoBehaviour
     public int starsCounter;
     public InventorySlot[] slots;
 
+    public GameObject prefabItem;
+    public Transform playerTransform;
 
     private void Start()
     {
@@ -39,19 +41,44 @@ public class ManagerInventory : MonoBehaviour
             textStar.text = starsCounter.ToString();
             return;
         }
-        else 
+
+        foreach (var slot in slots)
         {
+            if(slot.itemSO == itemSO && slot.quantity < slot.stackSize)
+            {
+                int availabelSpace = slot.stackSize - slot.quantity;
+                int ammountToAdd = Mathf.Min(availabelSpace, quantity);
+
+                slot.quantity += ammountToAdd;
+                quantity -= ammountToAdd;
+
+                slot.UpdateUI();
+
+                if(quantity <= 0)
+                    return;
+            }
+        }
+
             foreach(var slot in slots)
             {
                 if(slot.itemSO == null)
                 {
+                    int ammountToAdd = Mathf.Min(itemSO.stackSize, quantity);
                     slot.itemSO = itemSO;
                     slot.quantity = quantity;
                     slot.UpdateUI();
                     return;
                 }
             }
-        }
+
+        if (quantity > 0)
+            DropLoot(itemSO, quantity);
+    }
+
+    public void DropLoot(ItemSO itemSO, int quantity)
+    {
+        Loot loot = Instantiate(prefabItem, playerTransform.position, Quaternion.identity).GetComponent<Loot>();
+        loot.Initialize(itemSO, quantity);
     }
 
     public void UseItem(InventorySlot slot)

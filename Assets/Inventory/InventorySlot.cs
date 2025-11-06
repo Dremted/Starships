@@ -7,12 +7,16 @@ using UnityEngine.UI;
 
 public class InventorySlot : MonoBehaviour, IPointerClickHandler
 {
-    public ItemSO itemSO;
     public int quantity;
+    public int stackSize;
+
     public ManagerInventory managerInventory;
+    public ItemSO itemSO;
 
     public TMP_Text textSlotQuantity;
     public Image iconSlot;
+
+
 
     private void Start()
     {

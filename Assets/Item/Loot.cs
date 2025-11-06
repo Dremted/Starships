@@ -10,8 +10,11 @@ public class Loot : MonoBehaviour
     public Animator animator;
     public LayerMask player;
     public Rigidbody2D _rb;
+    public Collider2D _col;
 
     public int quantity;
+
+    public bool canBePicked = true;
 
     public static event Action<ItemSO, int> OnItemLooted;
 
@@ -19,6 +22,7 @@ public class Loot : MonoBehaviour
     {
         _rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
+        _col = GetComponent<Collider2D>();
     }
 
     private void OnValidate()
@@ -29,9 +33,19 @@ public class Loot : MonoBehaviour
         UpdateApperance();
 
     }
+
+    public void Initialize(ItemSO itemSO, int quantity)
+    {
+        this.itemSO = itemSO;
+        this.quantity = quantity;
+        canBePicked = false;
+        UpdateApperance();
+    }
+
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if((player.value & (1 << collision.gameObject.layer)) > 0)
+        if((player.value & (1 << collision.gameObject.layer)) > 0 && canBePicked)
         {
             if (itemSO.isItem)
                 OnItemLooted?.Invoke(itemSO, quantity);
@@ -39,7 +53,16 @@ public class Loot : MonoBehaviour
             _rb.velocity = Vector3.zero;
             _rb.gravityScale = 0;
             animator.Play("pickup");
+            _col.enabled = false;
             Destroy(gameObject,1f);
+        }
+    }
+
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if ((player.value & (1 << collision.gameObject.layer)) > 0)
+        {
+            canBePicked = true;
         }
     }
 
