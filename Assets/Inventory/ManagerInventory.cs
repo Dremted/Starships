@@ -7,6 +7,7 @@ using static UnityEditor.Progress;
 public class ManagerInventory : MonoBehaviour
 {
     public TMP_Text textStar;
+    public UseItem useItem;
 
     public int starsCounter;
     public InventorySlot[] slots;
@@ -50,6 +51,20 @@ public class ManagerInventory : MonoBehaviour
                     return;
                 }
             }
+        }
+    }
+
+    public void UseItem(InventorySlot slot)
+    {
+        if(slot != null && slot.quantity > 0)
+        {
+            useItem.ApplyItemEffect(slot.itemSO);
+            slot.quantity--;
+            if(slot.quantity <= 0)
+            {
+                slot.itemSO = null;
+            }
+            slot.UpdateUI();
         }
     }
 }

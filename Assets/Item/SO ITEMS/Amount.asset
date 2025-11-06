@@ -19,6 +19,6 @@ MonoBehaviour:
   isItem: 1
   maxHealth: 0
   currentHealth: 0
-  speed: 0
-  amount: 1
+  speed: 5
+  amount: 0
   duration: 0

@@ -389,6 +389,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   textStar: {fileID: 637315088}
+  useItem: {fileID: 975478159}
   starsCounter: 0
   slots:
   - {fileID: 1698372848}
@@ -1837,6 +1838,7 @@ GameObject:
   m_Component:
   - component: {fileID: 975478158}
   - component: {fileID: 975478157}
+  - component: {fileID: 975478159}
   m_Layer: 0
   m_Name: ManagerStats
   m_TagString: Untagged
@@ -1856,6 +1858,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 462c4df2f6658934b80bd0d21244dd66, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  textHealth: {fileID: 0}
+  statsPlayerUI: {fileID: 0}
   speedMove: 5
   maxHealth: 5
   currentHealth: 4
@@ -1874,6 +1878,18 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &975478159
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 975478156}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e6a184be169aa744c9770de4e9bcc70d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!224 &1008313479 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 6591136915551490506, guid: 15720ae7465faa34b83ae3239d77ff84, type: 3}

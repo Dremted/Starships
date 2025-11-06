@@ -41,7 +41,7 @@ public class StatsPlayerUI : MonoBehaviour
         slots[0].GetComponentInChildren<TMP_Text>().text = "Speed: " + ManagerStatsPlayer.Instance.speedMove.ToString();
     }
 
-    private void UpdateAllStats()
+    public void UpdateAllStats()
     {
         UpdateSpeed();
     }
