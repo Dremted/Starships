@@ -37,14 +37,12 @@ public class Loot : MonoBehaviour
     }
 
     public void Initialize(ItemSO itemSO, int quantity)
-    {
+     {
         this.itemSO = itemSO;
         this.quantity = quantity;
         canBePicked = false;
         UpdateApperance();
     }
-
-
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if((player.value & (1 << collision.gameObject.layer)) > 0 && canBePicked)
