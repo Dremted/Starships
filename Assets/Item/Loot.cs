@@ -23,6 +23,8 @@ public class Loot : MonoBehaviour
         _rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
         _col = GetComponent<Collider2D>();
+        if (_sr == null )
+            GetComponent<SpriteRenderer>();
     }
 
     private void OnValidate()
@@ -68,7 +70,8 @@ public class Loot : MonoBehaviour
 
     private void UpdateApperance()
     {
-        this.name = itemSO.name;
+        if(this.name == null)
+            this.name = itemSO.name;
         _sr.sprite = itemSO.itemSprite;
     }
 }

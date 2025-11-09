@@ -25,6 +25,7 @@ public class ManagerInventory : MonoBehaviour
 
     private void OnEnable()
     {
+        Loot.OnItemLooted -= AddItem;
         Loot.OnItemLooted += AddItem;
     }
 
@@ -63,12 +64,14 @@ public class ManagerInventory : MonoBehaviour
             {
                 if(slot.itemSO == null)
                 {
-                    int ammountToAdd = Mathf.Min(itemSO.stackSize, quantity);
-                    slot.itemSO = itemSO;
-                    slot.quantity = quantity;
-                    slot.UpdateUI();
+                int amountToAdd = Mathf.Min(itemSO.stackSize, quantity);
+                slot.itemSO = itemSO;
+                slot.quantity = amountToAdd;
+                quantity -= amountToAdd;
+                slot.UpdateUI();
+                if (quantity <= 0)
                     return;
-                }
+            }
             }
 
         if (quantity > 0)
@@ -81,6 +84,16 @@ public class ManagerInventory : MonoBehaviour
         loot.Initialize(itemSO, quantity);
     }
 
+    public void DropItem(InventorySlot slot)
+    {
+        DropLoot(slot.itemSO, 1);
+        slot.quantity -= 1;
+        if(slot.quantity <= 0)
+        {
+            slot.itemSO = null;
+        }
+        slot.UpdateUI();
+    }
     public void UseItem(InventorySlot slot)
     {
         if(slot != null && slot.quantity > 0)

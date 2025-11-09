@@ -27,10 +27,14 @@ public class InventorySlot : MonoBehaviour, IPointerClickHandler
     {
         if (eventData.button == PointerEventData.InputButton.Left)
         {
-            if(quantity > 0)
+            if (quantity > 0)
             {
                 managerInventory.UseItem(this);
             }
+        }
+        else if (eventData.button == PointerEventData.InputButton.Right)
+        {
+            managerInventory.DropItem(this);
         }
     }
 

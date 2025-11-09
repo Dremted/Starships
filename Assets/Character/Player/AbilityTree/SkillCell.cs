@@ -17,7 +17,6 @@ public class SkillCell : MonoBehaviour
     public bool isUnlocked;
 
     public static event Action<SkillCell> getSkillOP;
-    public static event Action<SkillCell> MaxSkill;
 
     public void TryUpdateCell()
     {
