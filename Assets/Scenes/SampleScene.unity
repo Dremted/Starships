@@ -468,8 +468,8 @@ MonoBehaviour:
   - {fileID: 1698372848}
   - {fileID: 2018834456}
   - {fileID: 1409476758}
-  prefabItem: {fileID: 0}
-  playerTransform: {fileID: 0}
+  prefabItem: {fileID: 4532773686629446512, guid: 8ce7398b8cb01b449ace40c5d8aacdd1, type: 3}
+  playerTransform: {fileID: 827318066}
 --- !u!1 &296246041
 GameObject:
   m_ObjectHideFlags: 0
